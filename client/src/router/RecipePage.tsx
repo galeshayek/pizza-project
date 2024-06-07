@@ -47,11 +47,13 @@ const RecipePage = () => {
   const deleteRecipe = async () => {
     try {
       if (r?._id && jwt) {
-        await recipeSerivce.delete(jwt, r?._id);
         Swal.fire({
-          title: "Recipe Deleted",
-          icon: "success",
+          title: "Are you sure?",
+          text: "This action is irreversible",
+          icon: "warning",
+          showCancelButton: true,
         }).then((res) => {
+          recipeSerivce.delete(jwt, r?._id);
           res.isConfirmed && navigate(-1);
         });
       }
@@ -70,20 +72,18 @@ const RecipePage = () => {
       <Button className="w-16" color={"dark"} onClick={() => navigate(-1)}>
         <FaArrowLeft />
       </Button>
-      <img
+      {/* <img
         className="size-4/12"
         src={r?.image ?? "/assets/images/pizzaLogin.png"}
         alt=""
-      />
+      /> */}
       <h2 className="border-b-2 text-red-600">{r?.title}</h2>
       <h3 className="text-2xl">{r?.description}</h3>
-      {/* user */}
       <div className="mr-auto">
         <Avatar
           img={`${userUrl}${r?.user.image}`}
         >{`${r?.user.firstName} ${r?.user.lastName}`}</Avatar>
       </div>
-      {/* info */}
       <div className="flex justify-center gap-10 *:flex *:size-32 *:flex-col *:items-center *:justify-center *:rounded-xl *:border-2 *:p-2">
         <div>
           <FaBars />

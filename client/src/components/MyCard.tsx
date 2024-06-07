@@ -9,9 +9,9 @@ import { recipeSerivce } from "../service/recipe";
 import { AuthContext } from "../contexts/AuthContext";
 import { FavContext } from "../contexts/FavContext";
 
-const MyCard: IMyCard = ({ title, description, image, id }) => {
+const MyCard: IMyCard = ({ title, description, id }) => {
   const { toggle } = useContext(FavContext);
-
+  const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt") || "";
   const { user } = useContext(AuthContext);
@@ -50,17 +50,20 @@ const MyCard: IMyCard = ({ title, description, image, id }) => {
     }
   };
   return (
-    <div className="relative flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-md dark:border-gray-700 dark:bg-gray-800">
-      <button onClick={() => handleFav()} className="absolute right-4 text-3xl">
-        {isFav ? (
-          <span className=" text-amber-500">
-            <FaBookmark />
-          </span>
-        ) : (
-          <FaRegBookmark />
-        )}
-      </button>
-      <img className="aspect-video shadow" src={`${image}`} alt="" />
+    <div className=" flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-md dark:border-gray-700 dark:bg-gray-800">
+      {isLoggedIn && (
+        <button onClick={() => handleFav()} className="ml-auto text-3xl">
+          {isFav ? (
+            <span className=" text-amber-500">
+              <FaBookmark />
+            </span>
+          ) : (
+            <FaRegBookmark />
+          )}
+        </button>
+      )}
+
+      {/* <img className="aspect-video shadow" src={`${image}`} alt="" /> */}
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h5>

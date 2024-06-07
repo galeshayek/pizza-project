@@ -6,6 +6,7 @@ import { isSelfRecipe } from "../middleware/is-self-recipe";
 import RecipeService from "../services/recipe-service";
 import updatedRecipe from "../middleware/updated-recipe";
 import { isRecipeOwnerOrAdmin } from "../middleware/is-admin-or-self-card";
+import { isAdminOrSelf } from "../middleware/is-admin-or-self";
 
 const router = Router()
 
@@ -53,7 +54,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 //update Recipe
-router.put('/:id', ...isSelfRecipe, updatedRecipe, vaildateUpdateRecipe, validateId, async (req, res, next) => {
+router.put('/:id', ...isAdminOrSelf, updatedRecipe, vaildateUpdateRecipe, validateId, async (req, res, next) => {
     try {
         const id = req.params.id
         const newCard = req.body;

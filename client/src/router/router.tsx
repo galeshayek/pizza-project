@@ -11,6 +11,8 @@ import Profile from "./Profile";
 import MyRecipes from "./MyRecipes";
 import EditRecipe from "./EditRecipe";
 import Favorites from "./Favorites";
+import CrmRecipes from "./CrmRecipes";
+import CrmUsers from "./CrmUsers";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +59,14 @@ export const router = createBrowserRouter([
       {
         path: "/profile/favorites",
         element: <Favorites />,
+      },
+      {
+        path: "/crm/recipes",
+        element: <CrmRecipes />,
+      },
+      {
+        path: "/crm/users",
+        element: <CrmUsers />,
       },
     ],
   },

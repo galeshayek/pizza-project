@@ -41,7 +41,7 @@ const Login = () => {
       }
     } catch (e) {
       //@ts-ignore
-      if (e.response.status === 401) setloginError(e.response.data.message);
+      if (e) setloginError("Email or Password are incorrect");
     }
   };
 

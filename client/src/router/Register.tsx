@@ -34,8 +34,7 @@ const Register = () => {
         setloginError("");
         reset();
         Swal.fire({
-          title: "Good job!",
-          text: "You clicked the button!",
+          title: "Registered",
           icon: "success",
           confirmButtonColor: "#D11515",
         }).then(() => {

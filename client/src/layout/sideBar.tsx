@@ -1,14 +1,15 @@
 import { Sidebar } from "flowbite-react";
 import { useContext, useEffect, useState } from "react";
 import { BsTriangleFill } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
 import {
+  FaBookOpen,
   FaCircle,
   FaPen,
   FaPizzaSlice,
   FaSquare,
-  FaUpload,
+  FaStar,
   FaUser,
+  FaUserCircle,
 } from "react-icons/fa";
 import { FaChartBar } from "react-icons/fa6";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
@@ -17,6 +18,7 @@ import { closeSideBarContext } from "../contexts/closeSideBar";
 import SideBarItem from "../components/SideBarItem";
 import { AuthContext } from "../contexts/AuthContext";
 import { IUser } from "../@types/types.user";
+import { IoCreate } from "react-icons/io5";
 
 const MysideBar = () => {
   const { isClosed } = useContext(closeSideBarContext);
@@ -61,7 +63,7 @@ const MysideBar = () => {
         <Sidebar.ItemGroup>
           {!isLoggedIn && (
             <NavLink to={"/login"}>
-              <SideBarItem title="Sign In">
+              <SideBarItem title="Log In">
                 <HiArrowSmRight />
               </SideBarItem>
             </NavLink>
@@ -75,12 +77,12 @@ const MysideBar = () => {
           )}
           {role >= 1 && (
             <Sidebar.Collapse icon={FaChartBar} label="CRM">
-              <NavLink to={"/"}>
+              <NavLink to={"/crm/recipes"}>
                 <SideBarItem title="Recipes">
                   <FaPizzaSlice />
                 </SideBarItem>
               </NavLink>
-              <NavLink to={"/"}>
+              <NavLink to={"/crm/users"}>
                 <SideBarItem title="Users">
                   <FaUser />
                 </SideBarItem>
@@ -91,28 +93,35 @@ const MysideBar = () => {
         <Sidebar.ItemGroup>
           {isLoggedIn && (
             <NavLink to={"/profile/favorites"}>
-              <SideBarItem title={`${Iuser.name.first} ${Iuser.name.last}`}>
-                <CgProfile />
+              <SideBarItem title={`Fvorites`}>
+                <FaStar />
               </SideBarItem>
             </NavLink>
           )}
           <NavLink to={"/my-recipes"}>
             {isLoggedIn && (
               <SideBarItem title="My Recipes">
-                <FaPen />
+                <FaBookOpen />
               </SideBarItem>
             )}
           </NavLink>
           {isLoggedIn && (
             <NavLink to={"/create"}>
               <SideBarItem title="Share Recipe">
-                <FaUpload />
+                <IoCreate />
+              </SideBarItem>
+            </NavLink>
+          )}
+          {isLoggedIn && (
+            <NavLink to={"/profile/edit"}>
+              <SideBarItem title={`${Iuser.name.first} ${Iuser.name.last}`}>
+                <FaUserCircle />
               </SideBarItem>
             </NavLink>
           )}
           {isLoggedIn && (
             <NavLink to={"/"} onClick={() => logout()}>
-              <SideBarItem title="Sign Out">
+              <SideBarItem title="Log Out">
                 <HiArrowSmLeft />
               </SideBarItem>
             </NavLink>
