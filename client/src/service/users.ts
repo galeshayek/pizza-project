@@ -28,7 +28,7 @@ getAll: (jwt: string)=> axios.get(userUrl,{headers:{
     'Authorization': jwt
 }}),
 
-getById: (id: string, jwt: string) => axios.get(`${userUrl}/${id}`, {headers:{
+getById: (id: string, jwt: string) =>  axios.get(`${userUrl}/${id}`, {headers:{
     'Authorization': jwt
 }}),
 

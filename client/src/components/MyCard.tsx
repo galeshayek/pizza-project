@@ -7,9 +7,11 @@ import { useContext, useEffect, useState } from "react";
 import { userService } from "../service/users";
 import { recipeSerivce } from "../service/recipe";
 import { AuthContext } from "../contexts/AuthContext";
-import { useFavorites } from "../contexts/FavContext";
+import { FavContext } from "../contexts/FavContext";
 
 const MyCard: IMyCard = ({ title, description, image, id }) => {
+  const { toggle } = useContext(FavContext);
+
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt") || "";
   const { user } = useContext(AuthContext);
@@ -17,14 +19,12 @@ const MyCard: IMyCard = ({ title, description, image, id }) => {
   const { _id } = me;
   const [isFav, setIsFav] = useState(false);
 
-  const { favorites, updateFavorites, toggleFavorite } = useFavorites(); // Destructure the context values
-
   useEffect(() => {
     const fetch = async () => {
       try {
         if (_id) {
           const res = await userService.getUserById(_id, jwt);
-          setIsFav(res.data.favorites.includes(id));
+          setIsFav(res.data.favorites.includes(id as string));
         }
       } catch (e) {
         console.log(e);
@@ -38,9 +38,12 @@ const MyCard: IMyCard = ({ title, description, image, id }) => {
       if (isFav) {
         await recipeSerivce.addFav(jwt, id as string);
         setIsFav(false);
+
+        toggle(id as string);
       } else {
         await recipeSerivce.addFav(jwt, id as string);
         setIsFav(true);
+        toggle(id as string);
       }
     } catch (e) {
       console.log(e);

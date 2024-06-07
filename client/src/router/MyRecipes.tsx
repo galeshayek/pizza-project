@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IRecipe } from "../@types/types.recipe";
 import MyCard from "../components/MyCard";
 import { recipeSerivce } from "../service/recipe";
+import { FavContext } from "../contexts/FavContext";
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState<IRecipe[]>([]);
