@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: 209, 21, 21;
+    --complimantry: 240, 240, 240;
+    --pop: 239, 213, 29;
+    --oposite: 255,
+        255,
+        255;
+    --text: 36, 36, 36;
+}
+
+.dark {
+    --primary: 82, 120, 234;
+    --complimantry: 92, 110, 157;
+    --pop: 232, 72, 112;
+    --oposite: 60, 60, 60;
+    --text: 255, 255, 255
+}
+h1{
+    @apply text-5xl
+}
+
+h2 {
+    @apply text-4xl
+}
+
+h3 {
+    @apply text-3xl
+}
+
+h4 {
+    @apply text-2xl
+}
+
+p {
+    @apply text-lg
+}
