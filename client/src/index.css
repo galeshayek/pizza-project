@@ -19,6 +19,11 @@
     --oposite: 60, 60, 60;
     --text: 255, 255, 255
 }
+
+html{
+    scroll-behavior: smooth;
+}
+
 h1{
     @apply text-5xl
 }
@@ -37,4 +42,7 @@ h4 {
 
 p {
     @apply text-lg
+}
+li{
+    @apply text-md
 }

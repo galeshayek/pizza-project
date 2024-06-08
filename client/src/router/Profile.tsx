@@ -10,7 +10,7 @@ import { JwtDecodeType } from "../@types/types";
 import Swal from "sweetalert2";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, login } = useContext(AuthContext);
   const jwt = localStorage.getItem("jwt") || "";
   const { _id } = jwtDecode(jwt) as JwtDecodeType;
   const Iuser: IUser = user;
@@ -24,10 +24,10 @@ const Profile = () => {
   } = useForm<IUpdateUser>({
     defaultValues: {
       name: {
-        first: Iuser.name.first,
-        last: Iuser.name.last,
+        first: Iuser?.name.first,
+        last: Iuser?.name.last,
       },
-      phone: Iuser.phone,
+      phone: Iuser?.phone,
     },
   });
   const onSubmit: SubmitHandler<IUpdateUser> = async (data) => {
@@ -41,7 +41,14 @@ const Profile = () => {
           timerProgressBar: true,
           showConfirmButton: false,
         });
-        reset();
+        login(jwt);
+        reset({
+          name: {
+            first: data?.name.first,
+            last: data?.name.last,
+          },
+          phone: data?.phone,
+        });
       })
       .catch((e) => {
         setError("root", { type: "manual", message: e.response.data.message });

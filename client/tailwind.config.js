@@ -21,7 +21,10 @@ export default {
         '3xl': 'clamp(1.953rem, 2.2vw, 2.5rem)',
         '4xl': 'clamp(2.441rem, 2.5vw, 3rem)',
         '5xl': 'clamp(3.052rem, 3vw, 3.5rem)',
-      }
+      },
+      backgroundImage: {
+        'homeBanner': "url('assets/images/homePageBanner.webp')", // Add your image path here
+      },
     },
   },
   plugins: [flowbite.plugin()],

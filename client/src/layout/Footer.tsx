@@ -1,26 +1,51 @@
 import { Footer } from "flowbite-react";
+import { useContext } from "react";
+import { BsFacebook, BsGithub, BsInstagram } from "react-icons/bs";
+import { closeSideBarContext } from "../contexts/closeSideBar";
 
 export function FooterComponent() {
-  return (
+  const { isClosed } = useContext(closeSideBarContext);
+
+  return !isClosed ? (
     <Footer className="border-t-2 bg-gray-50" container>
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <Footer.Brand
-            href="https://flowbite.com"
-            src="https://flowbite.com/docs/images/logo.svg"
+            href="#"
+            src="assets/images/logo.png"
             alt="Flowbite Logo"
-            name="Flowbite"
+            name="PIZZA MASTER"
           />
           <Footer.LinkGroup>
             <Footer.Link href="#">About</Footer.Link>
             <Footer.Link href="#">Privacy Policy</Footer.Link>
             <Footer.Link href="#">Licensing</Footer.Link>
-            <Footer.Link href="#">Contact</Footer.Link>
+            <Footer.Link href="mailto:galeshayek15@gmail.com">
+              Contact
+            </Footer.Link>
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
-        <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+        <div className="w-full sm:flex sm:items-center sm:justify-between">
+          <Footer.Copyright by="Gal Eshayek" year={2024} />
+          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+            <Footer.Icon
+              href="#https://www.facebook.com/galeshayek"
+              icon={BsFacebook}
+            />
+            <Footer.Icon
+              href="#https://www.instagram.com/gal_eshayek/"
+              icon={BsInstagram}
+            />
+            <Footer.Icon
+              href="#https://github.com/galeshayek"
+              icon={BsGithub}
+            />
+          </div>
+        </div>
       </div>
     </Footer>
+  ) : (
+    <></>
   );
 }

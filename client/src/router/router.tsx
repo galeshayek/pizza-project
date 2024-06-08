@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import ErrorEelement from "../components/ErrorElement";
 import Root from "../layout/Root";
 import Login from "./Login";
-import Home from "./Home";
 import Recipes from "./Recipes";
 import Register from "./Register";
 import CreateRecipe from "./CreateRecipe";
@@ -14,6 +13,8 @@ import Favorites from "./Favorites";
 import CrmRecipes from "./CrmRecipes";
 import CrmUsers from "./CrmUsers";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Home from "./Home";
+import About from "./About";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "about",
+        element: <About />,
       },
       {
         path: "recipes/:id",

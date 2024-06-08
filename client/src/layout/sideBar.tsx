@@ -4,6 +4,7 @@ import { BsTriangleFill } from "react-icons/bs";
 import {
   FaBookOpen,
   FaCircle,
+  FaInfoCircle,
   FaPen,
   FaPizzaSlice,
   FaSquare,
@@ -34,7 +35,7 @@ const MysideBar = () => {
       className={`${visibility} top-0 h-screen border-r-2 border-gray-200`}
       aria-label="Sidebar with logo branding example"
     >
-      <Sidebar.Logo href="#" img="/vite.svg" imgAlt="vite logo">
+      <Sidebar.Logo href="#" img="/assets/images/logo.png" imgAlt="site logo">
         <p>Pizza Master</p>
       </Sidebar.Logo>
       <Sidebar.Items>
@@ -42,6 +43,11 @@ const MysideBar = () => {
           <NavLink to={"/"}>
             <SideBarItem title="Home">
               <FaPizzaSlice />
+            </SideBarItem>
+          </NavLink>
+          <NavLink to={"/about"}>
+            <SideBarItem title="About">
+              <FaInfoCircle />
             </SideBarItem>
           </NavLink>
           <NavLink to={"/recipes/Dough"}>

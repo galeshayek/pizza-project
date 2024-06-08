@@ -5,6 +5,7 @@ import { recipeSerivce } from "../service/recipe";
 import { IRecipe } from "../@types/types.recipe";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import formatDate from "../utils/formateDate";
 
 const CrmRecipes = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,7 +56,7 @@ const CrmRecipes = () => {
         Recipes
       </Badge>
       <div className="flex flex-col gap-4 py-4 pl-2">
-        <ul className="flex w-11/12 justify-between border-b px-10 py-2 text-xl font-semibold shadow">
+        <ul className="flex w-11/12 justify-between border-b px-2  py-2 text-xl font-semibold shadow *:w-3/12 *:text-center">
           <li>Info</li>
           <li>Added at</li>
           <li>Actions</li>
@@ -65,16 +66,20 @@ const CrmRecipes = () => {
             className="flex w-11/12 items-center justify-between rounded-lg border px-2"
             key={r._id}
           >
-            <img
+            {/* <img
               className="w-1/12"
               src={r.image || "/assets/images/pizzaLogin.png"}
               alt="Recipe img"
-            />
-            <div className="line-clamp-3 w-6/12 ">
+            /> */}
+            <div className="line-clamp-3 w-3/12 ">
               <h4>{r.title}</h4>
               <p className="text-gray-600">{r.description}</p>
             </div>
-            <div className=" flex h-fit gap-3">
+            <p className="w-3/12 text-center text-md">
+              {formatDate(r.createdAt)}
+            </p>
+
+            <div className=" flex h-fit w-3/12 gap-3">
               <Button onClick={() => navigate(`/recipe/single/${r?._id}`)}>
                 Read
               </Button>

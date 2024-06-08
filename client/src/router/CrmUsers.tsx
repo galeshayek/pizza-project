@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { userService } from "../service/users";
 import { IUser } from "../@types/types.user";
 import { userUrl } from "../service/url";
+import formatDate from "../utils/formateDate";
 
 const CrmUsers = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,15 +19,6 @@ const CrmUsers = () => {
       setUsers(r.data);
     });
   }, [jwt]);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
 
   //deleteRecipe
   const deleteUser = async (id: string) => {
@@ -68,7 +60,7 @@ const CrmUsers = () => {
       <div className=" border"></div>
       <Badge className="m-4  flex w-3/12 justify-center text-3xl">Users</Badge>
       <div className="flex flex-col gap-4 py-4 pl-2">
-        <ul className="flex w-11/12 justify-between border-b px-10 py-2 text-xl font-semibold shadow">
+        <ul className="flex w-11/12 justify-between border-b px-2  py-2 text-xl font-semibold shadow *:w-3/12 *:text-center">
           <li>Info</li>
           <li>Added at</li>
           <li>Actions</li>
@@ -78,18 +70,25 @@ const CrmUsers = () => {
             className="flex w-11/12 items-center justify-between rounded-lg border px-2"
             key={u._id}
           >
-            <Avatar
-              className="w-1/12"
-              img={`${userUrl}${u.image}` || "/assets/images/pizzaLogin.png"}
-              alt="user profile image"
-            />
-            <div className="line-clamp-3 w-6/12 ">
-              <h4>{`${u.name.first} ${u.name.last}`}</h4>
-              <p className="text-gray-600">{u.email}</p>
+            <div className="flex w-5/12 gap-8">
+              <Avatar
+                className="aspect-square"
+                img={`${userUrl}${u.image}` || "/assets/images/pizzaLogin.png"}
+                alt="user profile image"
+              />
+              <div className="">
+                <p>{`${u.name.first} ${u.name.last}`}</p>
+                <p className="text-sm text-gray-600">{u.email}</p>
+              </div>
             </div>
-            <p className="w-3/12 text-md">{formatDate(u.createdAt)}</p>
-
-            <Button onClick={() => deleteUser(u?._id)}>Delete</Button>
+            <p className="w-2/12 text-center text-md">
+              {formatDate(u.createdAt)}
+            </p>
+            <div className="flex w-5/12 justify-end">
+              <Button className="" onClick={() => deleteUser(u?._id)}>
+                Delete
+              </Button>
+            </div>
           </div>
         ))}
       </div>

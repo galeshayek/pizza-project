@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Badge, Button, FileInput, Label } from "flowbite-react";
 import { IUploadImg } from "../@types/types.user";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -5,8 +6,12 @@ import { userService } from "../service/users";
 import { jwtDecode } from "jwt-decode";
 import { JwtDecodeType } from "../@types/types";
 import Swal from "sweetalert2";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
 
 const UploadUserImage = () => {
+  const { login } = useContext(AuthContext);
+
   function isEnglish(text) {
     const englishRegex = /^[A-Za-z0-9.,?!'"\s]+$/;
     return englishRegex.test(text);
@@ -46,6 +51,7 @@ const UploadUserImage = () => {
             showConfirmButton: false,
           });
           reset();
+          login(jwt);
         })
         .catch((e) => {
           setError("root", {
@@ -64,7 +70,7 @@ const UploadUserImage = () => {
     >
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="file-upload" value="Upload Profile photo" />
+          <Label htmlFor="file-upload" value="Update Profile photo" />
         </div>
         <FileInput
           id="file-upload"
