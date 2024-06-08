@@ -57,7 +57,7 @@ const Home = () => {
           <div className="bg-homeBanner h-[28vw] w-full bg-cover bg-center"></div>
           <h1 className="text-red-600">Welcome Back to Pizza Master!</h1>
           <h2>Share Your Delicious Pizza Recipes</h2>
-          <p className="px-28 text-xl text-gray-700">
+          <p className="text-xl text-gray-700 md:px-28">
             We're thrilled to have you back! As a valued member of our
             community, we encourage you to share your culinary creations with
             fellow pizza enthusiasts. Your unique recipes contribute to the
@@ -66,8 +66,7 @@ const Home = () => {
           <Button color={"failure"} onClick={() => navigate("/create")}>
             Share Your Recipe
           </Button>
-
-          <p className="px-28 text-xl text-gray-700">
+          <p className="text-xl text-gray-700 md:px-28">
             Ready to inspire others with your pizza-making skills?
             <span className="font-semibold"> Click above </span>
             to share your favorite recipes and make a mark in our pizza-loving
@@ -88,7 +87,7 @@ const Home = () => {
             Dough
           </Badge>
         </div>
-        <div className="m-5 grid grid-cols-3 gap-5">
+        <div className="m-5 grid justify-center gap-5 md:grid-cols-3">
           {doughArr.slice(0, 3).map((i) => (
             <span key={i._id}>
               <MyCard
@@ -106,7 +105,7 @@ const Home = () => {
             Sauce
           </Badge>
         </div>
-        <div className="m-5 grid grid-cols-3 gap-5">
+        <div className="m-5 grid justify-center gap-5 md:grid-cols-3">
           {sauceArr.slice(0, 3).map((i) => (
             <span key={i._id}>
               <MyCard
@@ -124,7 +123,7 @@ const Home = () => {
             Toppings
           </Badge>
         </div>
-        <div className="m-5 grid grid-cols-3 gap-5">
+        <div className="m-5 grid justify-center gap-5 md:grid-cols-3">
           {toppingArr.slice(0, 3).map((i) => (
             <span key={i._id}>
               <MyCard

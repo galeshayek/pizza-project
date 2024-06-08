@@ -58,7 +58,7 @@ const Profile = () => {
     <>
       <form
         noValidate
-        className="ml-10 mt-10 flex w-8/12 flex-col gap-6"
+        className="mt-10 flex w-8/12 flex-col gap-6 max-md:mx-auto md:ml-10"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>

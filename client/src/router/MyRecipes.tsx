@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IRecipe } from "../@types/types.recipe";
 import MyCard from "../components/MyCard";
 import { recipeSerivce } from "../service/recipe";
-import { FavContext } from "../contexts/FavContext";
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState<IRecipe[]>([]);
@@ -21,7 +20,7 @@ const MyRecipes = () => {
       <h1 className="pl-4">my recipes</h1>
       <div className="flex flex-col">
         <div className="flex border-b-2 pb-2 pl-2"></div>
-        <div className="m-5 grid grid-cols-3 gap-5">
+        <div className="m-5 grid justify-center gap-5 md:grid-cols-3">
           {arr.map((i) => (
             <span key={i._id}>
               <MyCard

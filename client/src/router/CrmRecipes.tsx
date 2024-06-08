@@ -52,26 +52,21 @@ const CrmRecipes = () => {
         CRM
       </Badge>
       <div className=" border"></div>
-      <Badge className="m-4  flex w-3/12 justify-center text-3xl">
+      <Badge className="m-4  flex justify-center text-3xl md:w-3/12">
         Recipes
       </Badge>
-      <div className="flex flex-col gap-4 py-4 pl-2">
-        <ul className="flex w-11/12 justify-between border-b px-2  py-2 text-xl font-semibold shadow *:w-3/12 *:text-center">
+      <div className="flex flex-col gap-4 py-4 md:pl-2">
+        <ul className="flex justify-between border-b px-2 py-2  text-xl font-semibold shadow *:w-3/12 *:text-center md:w-11/12">
           <li>Info</li>
           <li>Added at</li>
           <li>Actions</li>
         </ul>
         {r.slice(currentPage, currentPage + 3).map((r) => (
           <div
-            className="flex w-11/12 items-center justify-between rounded-lg border px-2"
+            className="flex items-center justify-between rounded-lg border px-2 max-md:mx-2 max-md:flex-col md:w-11/12 "
             key={r._id}
           >
-            {/* <img
-              className="w-1/12"
-              src={r.image || "/assets/images/pizzaLogin.png"}
-              alt="Recipe img"
-            /> */}
-            <div className="line-clamp-3 w-3/12 ">
+            <div className="line-clamp-3 md:w-3/12 ">
               <h4>{r.title}</h4>
               <p className="text-gray-600">{r.description}</p>
             </div>
@@ -79,7 +74,7 @@ const CrmRecipes = () => {
               {formatDate(r.createdAt)}
             </p>
 
-            <div className=" flex h-fit w-3/12 gap-3">
+            <div className="flex gap-3 max-md:my-3 md:h-fit md:w-3/12">
               <Button onClick={() => navigate(`/recipe/single/${r?._id}`)}>
                 Read
               </Button>
@@ -91,7 +86,7 @@ const CrmRecipes = () => {
           </div>
         ))}
       </div>
-      <div className="flex overflow-x-auto sm:justify-center">
+      <div className=" flex overflow-x-auto pb-8 sm:justify-center">
         <Pagination
           currentPage={currentPage}
           totalPages={r.length - 3}

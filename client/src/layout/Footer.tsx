@@ -12,8 +12,8 @@ export function FooterComponent() {
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <Footer.Brand
             href="#"
-            src="assets/images/logo.png"
-            alt="Flowbite Logo"
+            src="/assets/images/logo.png"
+            alt="pizza master Logo"
             name="PIZZA MASTER"
           />
           <Footer.LinkGroup>

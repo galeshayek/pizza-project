@@ -35,6 +35,7 @@ const Favorites = () => {
 
     fetchRecipesAndUser();
   }, [status, id, jwt]);
+
   useEffect(() => {
     const x = recipes.filter((r) => user?.favorites.includes(r._id));
     setArr(x);
@@ -45,7 +46,7 @@ const Favorites = () => {
       <h1 className="pl-4">My Favorites</h1>
       <div className="flex flex-col">
         <div className="flex border-b-2 pb-2 pl-2"></div>
-        <div className="m-5 grid grid-cols-3 gap-5">
+        <div className="m-5 grid justify-center gap-5 md:grid-cols-3">
           {arr.map((i) => (
             <span key={i._id}>
               <MyCard

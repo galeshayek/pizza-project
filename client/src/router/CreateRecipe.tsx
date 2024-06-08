@@ -79,10 +79,12 @@ const CreateRecipe = () => {
   });
 
   return (
-    <section className="mt-10 px-24">
-      <h2 className="mb-5 text-primary">Share your awsom recipe</h2>
+    <section className="mt-10 md:px-24">
+      <h2 className="mb-5 text-primary max-md:text-center">
+        Share your awsom recipe
+      </h2>
       <form
-        className="ml-10 flex w-8/12 flex-col gap-6"
+        className="flex w-8/12 flex-col gap-6 max-md:mx-auto md:ml-10"
         noValidate
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -263,7 +265,7 @@ const CreateRecipe = () => {
           </fieldset>
         </div>
 
-        <div className="w-4/12">
+        <div className="md:w-4/12">
           <div className="mb-1 mt-3  flex gap-2">
             <Label htmlFor="range" value="Portions" />
             <Badge color={"failure"}>{portions}</Badge>
@@ -295,9 +297,9 @@ const CreateRecipe = () => {
                   value={`ingredient ${index + 1}`}
                 />
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 max-md:flex-col">
                 <TextInput
-                  className="w-4/12"
+                  className="md:w-4/12"
                   type="text"
                   id={`ingredient[${index}]`}
                   {...register(`ingredients.${index}`, {
@@ -318,7 +320,11 @@ const CreateRecipe = () => {
               </div>
             </div>
           ))}
-          <Button type="button" onClick={() => append("")} className="mb-4">
+          <Button
+            type="button"
+            onClick={() => append("")}
+            className="mb-4 max-md:mx-auto"
+          >
             Add an ingredient
           </Button>
         </div>

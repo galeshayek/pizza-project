@@ -1,7 +1,7 @@
 import axios from "axios";
 import { userUrl } from "./url";
 import { Ilogin, Iregister } from "../@types/types.forms";
-import { IUpdateUser, IUser } from "../@types/types.user";
+import { IRoleChange, IUpdateUser, IUser,  } from "../@types/types.user";
 
 export const userService = {
 login:  (data: Ilogin)=> {
@@ -39,4 +39,8 @@ update: (id: string, jwt: string, data: IUpdateUser) => axios.put(`${userUrl}/${
 delete: (id: string, jwt: string) => axios.delete(`${userUrl}/${id}`, {headers:{
     'Authorization': jwt
 }}),
+
+changeRole: (jwt:string, id: string, role: IRoleChange)=> axios.put(`${userUrl}/changerole/${id}`, role,{headers:{
+    'Authorization': jwt
+}})
 };

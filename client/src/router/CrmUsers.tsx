@@ -20,6 +20,43 @@ const CrmUsers = () => {
     });
   }, [jwt]);
 
+  const makeAdmin = async (id: string) => {
+    try {
+      await userService.changeRole(jwt, id, { set: "10" });
+      Swal.fire({
+        title: "Admin role added",
+        icon: "success",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1700,
+      }).then(() => {
+        userService.getAll(jwt).then((r) => {
+          setUsers(r.data);
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const removeAdmin = async (id: string) => {
+    try {
+      await userService.changeRole(jwt, id, { set: "0" });
+      Swal.fire({
+        title: "Admin role removed",
+        icon: "success",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1700,
+      }).then(() => {
+        userService.getAll(jwt).then((r) => {
+          setUsers(r.data);
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   //deleteRecipe
   const deleteUser = async (id: string) => {
     try {
@@ -59,15 +96,15 @@ const CrmUsers = () => {
       </Badge>
       <div className=" border"></div>
       <Badge className="m-4  flex w-3/12 justify-center text-3xl">Users</Badge>
-      <div className="flex flex-col gap-4 py-4 pl-2">
-        <ul className="flex w-11/12 justify-between border-b px-2  py-2 text-xl font-semibold shadow *:w-3/12 *:text-center">
+      <div className="flex flex-col gap-4 py-4 md:pl-2">
+        <ul className="flex justify-between border-b px-2 py-2  text-xl font-semibold shadow *:w-3/12 *:text-center md:w-11/12">
           <li>Info</li>
           <li>Added at</li>
           <li>Actions</li>
         </ul>
         {u.slice(currentPage, currentPage + 3).map((u) => (
           <div
-            className="flex w-11/12 items-center justify-between rounded-lg border px-2"
+            className="flex items-center justify-between rounded-lg border px-2 max-md:mx-2 max-md:flex-col md:w-11/12 "
             key={u._id}
           >
             <div className="flex w-5/12 gap-8">
@@ -84,7 +121,17 @@ const CrmUsers = () => {
             <p className="w-2/12 text-center text-md">
               {formatDate(u.createdAt)}
             </p>
-            <div className="flex w-5/12 justify-end">
+            <div className="flex w-5/12 justify-end gap-2">
+              {u.role == 0 && (
+                <Button className="" onClick={() => makeAdmin(u._id)}>
+                  Make Admin
+                </Button>
+              )}
+              {u.role == 10 && (
+                <Button className="" onClick={() => removeAdmin(u._id)}>
+                  Remove Admin
+                </Button>
+              )}
               <Button className="" onClick={() => deleteUser(u?._id)}>
                 Delete
               </Button>
@@ -92,7 +139,7 @@ const CrmUsers = () => {
           </div>
         ))}
       </div>
-      <div className="flex overflow-x-auto sm:justify-center">
+      <div className=" flex overflow-x-auto pb-8 sm:justify-center">
         <Pagination
           currentPage={currentPage}
           totalPages={u.length - 3}

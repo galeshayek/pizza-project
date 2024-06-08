@@ -13,8 +13,12 @@ import { SiLevelsdotfyi } from "react-icons/si";
 import moment from "moment";
 import { AuthContext } from "../contexts/AuthContext";
 import Swal from "sweetalert2";
+import { FavContext } from "../contexts/FavContext";
+import { userService } from "../service/users";
 
 const RecipePage = () => {
+  const { toggle } = useContext(FavContext);
+  const { isLoggedIn } = useContext(AuthContext);
   const jwt = localStorage.getItem("jwt");
   const { role } = useContext(AuthContext);
   const userId = localStorage.getItem("id");
@@ -23,6 +27,7 @@ const RecipePage = () => {
   const [r, setRecipe] = useState<IRecipe>();
   const isUser = userId == r?.userId;
   const isAdmin = role == 10;
+  const [isFav, setIsFav] = useState(false);
 
   const [formattedCreated, setCreated] = useState("");
   const [formattedUpdated, setUpdated] = useState("");
@@ -31,7 +36,7 @@ const RecipePage = () => {
       recipeSerivce.getRecipeById(id).then((res) => {
         setRecipe(res.data);
       });
-  }, []);
+  }, [id]);
 
   //render created and updated date
   useEffect(() => {
@@ -67,16 +72,42 @@ const RecipePage = () => {
     }
   };
 
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        if (userId && jwt) {
+          const res = await userService.getUserById(userId, jwt);
+          setIsFav(res.data.favorites.includes(id as string));
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetch();
+  }, [userId, id, jwt]);
+
+  const handleFav = async () => {
+    try {
+      if (isFav && jwt) {
+        await recipeSerivce.addFav(jwt, id as string);
+        setIsFav(false);
+
+        toggle(id as string);
+      } else {
+        await recipeSerivce.addFav(jwt ?? "", id as string);
+        setIsFav(true);
+        toggle(id as string);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <Card>
       <Button className="w-16" color={"dark"} onClick={() => navigate(-1)}>
         <FaArrowLeft />
       </Button>
-      {/* <img
-        className="size-4/12"
-        src={r?.image ?? "/assets/images/pizzaLogin.png"}
-        alt=""
-      /> */}
       <h2 className="border-b-2 text-red-600">{r?.title}</h2>
       <h3 className="text-2xl">{r?.description}</h3>
       <div className="mr-auto">
@@ -129,24 +160,35 @@ const RecipePage = () => {
           </p>
         )}
       </div>
-      {userId == r?.userId && (
-        <Button
-          color={"dark"}
-          className="w-3/12"
-          onClick={() => navigate(`/edit-recipe/${r?._id}`)}
-        >
-          Edit Recipe
-        </Button>
-      )}
-      {(isAdmin || isUser) && (
-        <Button
-          color={"dark"}
-          className="w-3/12"
-          onClick={() => deleteRecipe()}
-        >
-          Delete Recipe
-        </Button>
-      )}
+      <div className="flex gap-2">
+        {userId == r?.userId && (
+          <Button
+            color={"dark"}
+            className="w-3/12"
+            onClick={() => navigate(`/edit-recipe/${r?._id}`)}
+          >
+            Edit Recipe
+          </Button>
+        )}
+        {(isAdmin || isUser) && (
+          <Button
+            color={"dark"}
+            className="w-3/12"
+            onClick={() => deleteRecipe()}
+          >
+            Delete Recipe
+          </Button>
+        )}
+        {isLoggedIn && (
+          <i onClick={() => handleFav()} className=" text-3xl">
+            {isFav ? (
+              <Button color={"warning"}>Remove from Favorites</Button>
+            ) : (
+              <Button color={"failure"}>Add to Favorites</Button>
+            )}
+          </i>
+        )}
+      </div>
     </Card>
   );
 };

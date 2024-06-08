@@ -47,7 +47,7 @@ const Login = () => {
 
   return (
     <div className="grid w-full grid-cols-2 items-center *:h-screen">
-      <div className="flex flex-col justify-center gap-8 bg-primary px-20 text-oposite ">
+      <div className="flex flex-col justify-center gap-8 bg-primary px-20 text-oposite max-md:hidden ">
         <img
           className="mx-auto h-3/6"
           src="/assets/images/pizzaLogin.png"
@@ -59,7 +59,7 @@ const Login = () => {
         </p>
       </div>
 
-      <div className="m-auto flex w-7/12 flex-col justify-center">
+      <div className="m-auto flex w-7/12 flex-col justify-center max-md:col-span-2">
         <h3 className="pb-4">Login</h3>
         <form
           className="flex max-w-md flex-col gap-4"

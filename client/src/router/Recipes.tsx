@@ -59,14 +59,14 @@ const Recipes = () => {
       </div>
       <div className="ml-5 mt-5">
         <FloatingLabel
-          className=" w-3/12 rounded-lg"
+          className=" w-11/12 rounded-lg md:w-3/12"
           value={value}
           onChange={handleChange}
           variant="filled"
           label="Search"
         />
       </div>
-      <div className="m-5 grid grid-cols-3 gap-5">
+      <div className="m-5 grid justify-center gap-5 md:grid-cols-3">
         {search.map((i) => (
           <span key={i._id}>
             <MyCard

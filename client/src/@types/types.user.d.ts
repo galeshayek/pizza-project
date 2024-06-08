@@ -27,3 +27,7 @@ export type IUpdateUser = {
 export type IUploadImg = {
   image: FileList
 }
+
+export type IRoleChange = {
+    set: string
+}

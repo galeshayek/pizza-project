@@ -1,6 +1,6 @@
 import { Router } from "express";
 import userService from "../services/users-service";
-import { validateLogin, validateUpdate, validateUser } from "../middleware/joi";
+import { validateLogin, validateRole, validateUpdate, validateUser } from "../middleware/joi";
 import { isAdminOrSelf } from "../middleware/is-admin-or-self";
 import { Logger } from "../logs/logger";
 import { isAdmin } from "../middleware/is-admin";
@@ -31,6 +31,18 @@ router.post("/login", validateLogin, async (req, res, next) => {
     next(e);
   }
 });
+
+router.put('/changerole/:id', ...isAdmin, validateRole, async(req,res,next)=>{
+  try {
+    const id = req.params.id
+    const {set} = req.body
+    const user = await userService.changeRole(set, id);
+    const {role} = user;
+    res.status(200).json(role)
+  } catch (e) {
+    next(e)
+  }
+})
 
 //upload user profile picture
 router.post('/:id', ...uploadImage, async (req, res, next) => {
@@ -71,6 +83,7 @@ router.put('/:id', validateUpdate, ...isSelf, async (req, res, next) => {
   } catch (e) {
   }
 })
+
 
 //delete user
 router.delete('/:id', ...isAdminOrSelf, async (req, res, next) => {

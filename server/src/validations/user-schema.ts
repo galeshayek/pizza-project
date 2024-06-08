@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi, { object } from "joi";
 import { passwordRegex, phoneRegex } from "./patterns";
 import { IUser, UserName } from "../@types/user.type";
 import { Role } from "../@types/enums";
@@ -28,5 +28,9 @@ const updateUserSchema = Joi.object({
   phone: Joi.string().pattern(phoneRegex).required(),
 
 });
+
+const RoleSchema = Joi.object({
+  set: Joi.number().valid(...Object.values(Role))
+})
 export default userSchema;
-export { updateUserSchema }
+export { updateUserSchema, RoleSchema }

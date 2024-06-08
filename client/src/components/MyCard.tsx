@@ -63,7 +63,6 @@ const MyCard: IMyCard = ({ title, description, id }) => {
         </button>
       )}
 
-      {/* <img className="aspect-video shadow" src={`${image}`} alt="" /> */}
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h5>

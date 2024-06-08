@@ -5,11 +5,11 @@ import { FooterComponent } from "./Footer";
 const Root = () => {
   return (
     <div>
-      <span className="flex">
+      <span className="md:flex">
         <header>
           <MysideBar />
         </header>
-        <main className="grow">
+        <main className="md:grow">
           <Outlet />
         </main>
       </span>

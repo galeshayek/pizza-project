@@ -50,8 +50,8 @@ const Register = () => {
     }
   };
   return (
-    <div className="grid w-full  grid-cols-2 items-center *:h-screen">
-      <div className=" m-auto flex w-7/12 flex-col justify-center">
+    <div className=" grid w-full  grid-cols-2 items-center md:*:h-screen">
+      <div className="m-auto flex w-7/12 flex-col justify-center max-md:col-span-2 max-md:my-10">
         <h3 className="pb-4">Register</h3>
         <form
           className="flex max-w-md flex-col gap-4"
@@ -191,7 +191,7 @@ const Register = () => {
         </form>
       </div>
 
-      <div className=" flex flex-col justify-center gap-8 bg-primary px-20 text-oposite ">
+      <div className=" flex flex-col justify-center gap-8 bg-primary px-20 text-oposite max-md:hidden ">
         <img
           className="mx-auto h-3/6"
           src="/assets/images/pizzaLogin.png"
