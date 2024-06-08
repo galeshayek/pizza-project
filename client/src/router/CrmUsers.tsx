@@ -1,13 +1,16 @@
+/* eslint-disable tailwindcss/classnames-order */
+/* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Avatar, Badge, Button } from "flowbite-react";
+import { Avatar, Badge, Button, Pagination } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { userService } from "../service/users";
 import { IUser } from "../@types/types.user";
+import { userUrl } from "../service/url";
 
 const CrmUsers = () => {
-  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const onPageChange = (page: number) => setCurrentPage(page);
   const jwt = localStorage.getItem("jwt") || "";
   const [u, setUsers] = useState<IUser[]>([]);
   useEffect(() => {
@@ -16,10 +19,13 @@ const CrmUsers = () => {
     });
   }, [jwt]);
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return date.toLocaleDateString("en-US", options);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   };
 
   //deleteRecipe
@@ -62,15 +68,20 @@ const CrmUsers = () => {
       <div className=" border"></div>
       <Badge className="m-4  flex w-3/12 justify-center text-3xl">Users</Badge>
       <div className="flex flex-col gap-4 py-4 pl-2">
-        {u.map((u) => (
+        <ul className="flex w-11/12 justify-between border-b px-10 py-2 text-xl font-semibold shadow">
+          <li>Info</li>
+          <li>Added at</li>
+          <li>Actions</li>
+        </ul>
+        {u.slice(currentPage, currentPage + 3).map((u) => (
           <div
             className="flex w-11/12 items-center justify-between rounded-lg border px-2"
             key={u._id}
           >
             <Avatar
               className="w-1/12"
-              img={u.image || "/assets/images/pizzaLogin.png"}
-              alt=""
+              img={`${userUrl}${u.image}` || "/assets/images/pizzaLogin.png"}
+              alt="user profile image"
             />
             <div className="line-clamp-3 w-6/12 ">
               <h4>{`${u.name.first} ${u.name.last}`}</h4>
@@ -81,6 +92,13 @@ const CrmUsers = () => {
             <Button onClick={() => deleteUser(u?._id)}>Delete</Button>
           </div>
         ))}
+      </div>
+      <div className="flex overflow-x-auto sm:justify-center">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={u.length - 3}
+          onPageChange={onPageChange}
+        />
       </div>
     </>
   );

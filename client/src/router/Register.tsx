@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Iregister } from "../@types/types.forms";
 import { emailRegex, passwordRegex, phoneRegex } from "../validation/patterns";
 import { userService } from "../service/users";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
@@ -150,6 +150,19 @@ const Register = () => {
             <TextInput
               id="password1"
               type="password"
+              autoComplete="new-password"
+              helperText={
+                <>
+                  Already a User?
+                  <Link
+                    to={"/login"}
+                    className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                  >
+                    Log in
+                  </Link>
+                  .
+                </>
+              }
               {...register("password", {
                 required: "Password is required",
                 pattern: {

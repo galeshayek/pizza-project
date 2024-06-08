@@ -46,7 +46,7 @@ const CreateRecipe = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { description, info, ingredients, method, title, ...rest } = data;
     const filteredData = { description, info, ingredients, method, title };
-
+    console.log(filteredData);
     if (jwt) {
       recipeSerivce
         .createRecipe(jwt, filteredData)
@@ -66,6 +66,7 @@ const CreateRecipe = () => {
           }
         })
         .catch((e) => {
+          console.log(e);
           setError("root", { message: e.response.data.message });
         });
     }
@@ -232,23 +233,25 @@ const CreateRecipe = () => {
             <div className="flex items-center gap-2">
               <Radio
                 id="Suace"
-                value="suace"
+                value="sauce"
                 {...register("info.category", {
                   required: "Feild is required",
                 })}
               />
-              <Label htmlFor="Suace">Suace</Label>
+              <Label htmlFor="Suace">Sauce</Label>
             </div>
 
             <div className="flex items-center gap-2">
               <Radio
                 id="Toppings"
-                value="toppings"
+                value="topping"
                 {...register("info.category", {
                   required: "Feild is required",
                 })}
               />
-              <Label htmlFor="Toppings">Toppings</Label>
+              <Label htmlFor="Topping" value="Topping">
+                Toppings
+              </Label>
             </div>
             {errors.info?.category?.message ? (
               <Badge color={"warning"}>{errors.info?.category?.message}</Badge>

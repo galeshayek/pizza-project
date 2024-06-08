@@ -1,4 +1,4 @@
-import { Sidebar } from "flowbite-react";
+import { Avatar, Sidebar } from "flowbite-react";
 import { useContext, useEffect, useState } from "react";
 import { BsTriangleFill } from "react-icons/bs";
 import {
@@ -9,7 +9,6 @@ import {
   FaSquare,
   FaStar,
   FaUser,
-  FaUserCircle,
 } from "react-icons/fa";
 import { FaChartBar } from "react-icons/fa6";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
@@ -19,6 +18,7 @@ import SideBarItem from "../components/SideBarItem";
 import { AuthContext } from "../contexts/AuthContext";
 import { IUser } from "../@types/types.user";
 import { IoCreate } from "react-icons/io5";
+import { userUrl } from "../service/url";
 
 const MysideBar = () => {
   const { isClosed } = useContext(closeSideBarContext);
@@ -115,7 +115,7 @@ const MysideBar = () => {
           {isLoggedIn && (
             <NavLink to={"/profile/edit"}>
               <SideBarItem title={`${Iuser.name.first} ${Iuser.name.last}`}>
-                <FaUserCircle />
+                <Avatar img={`${userUrl}${Iuser.image}`} />
               </SideBarItem>
             </NavLink>
           )}

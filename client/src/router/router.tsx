@@ -13,6 +13,7 @@ import EditRecipe from "./EditRecipe";
 import Favorites from "./Favorites";
 import CrmRecipes from "./CrmRecipes";
 import CrmUsers from "./CrmUsers";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -62,11 +63,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/crm/recipes",
-        element: <CrmRecipes />,
+        element: (
+          <ProtectedRoute auth={10}>
+            <CrmRecipes />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/crm/users",
-        element: <CrmUsers />,
+        element: (
+          <ProtectedRoute auth={10}>
+            <CrmUsers />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

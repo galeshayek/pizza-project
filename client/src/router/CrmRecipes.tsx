@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Badge, Button } from "flowbite-react";
+import { Badge, Button, Pagination } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { recipeSerivce } from "../service/recipe";
 import { IRecipe } from "../@types/types.recipe";
@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CrmRecipes = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const onPageChange = (page: number) => setCurrentPage(page);
   const jwt = localStorage.getItem("jwt") || "";
   const navigate = useNavigate();
   const [r, setRecipes] = useState<IRecipe[]>([]);
@@ -53,7 +55,12 @@ const CrmRecipes = () => {
         Recipes
       </Badge>
       <div className="flex flex-col gap-4 py-4 pl-2">
-        {r.map((r) => (
+        <ul className="flex w-11/12 justify-between border-b px-10 py-2 text-xl font-semibold shadow">
+          <li>Info</li>
+          <li>Added at</li>
+          <li>Actions</li>
+        </ul>
+        {r.slice(currentPage, currentPage + 3).map((r) => (
           <div
             className="flex w-11/12 items-center justify-between rounded-lg border px-2"
             key={r._id}
@@ -61,7 +68,7 @@ const CrmRecipes = () => {
             <img
               className="w-1/12"
               src={r.image || "/assets/images/pizzaLogin.png"}
-              alt=""
+              alt="Recipe img"
             />
             <div className="line-clamp-3 w-6/12 ">
               <h4>{r.title}</h4>
@@ -78,6 +85,13 @@ const CrmRecipes = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="flex overflow-x-auto sm:justify-center">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={r.length - 3}
+          onPageChange={onPageChange}
+        />
       </div>
     </>
   );

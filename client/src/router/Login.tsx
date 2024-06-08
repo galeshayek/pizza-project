@@ -10,7 +10,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Ilogin } from "../@types/types.forms";
 import { emailRegex } from "../validation/patterns";
 import { userService } from "../service/users";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
@@ -51,7 +51,7 @@ const Login = () => {
         <img
           className="mx-auto h-3/6"
           src="/assets/images/pizzaLogin.png"
-          alt=""
+          alt="pizza slice illustration"
         />
         <h2 className="font-semibold">PizzaMaster, the ultimate recipe hub.</h2>
         <p className="font-light">
@@ -97,6 +97,19 @@ const Login = () => {
             <TextInput
               id="password1"
               type="password"
+              autoComplete="current-password"
+              helperText={
+                <>
+                  Don't have an Account?
+                  <Link
+                    to={"/register"}
+                    className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                  >
+                    Register
+                  </Link>
+                  .
+                </>
+              }
               {...register("password", {
                 required: "password is required",
               })}

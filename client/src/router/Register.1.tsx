@@ -167,7 +167,7 @@ export const Register = () => {
         <img
           className="mx-auto h-3/6"
           src="/assets/images/pizzaLogin.png"
-          alt=""
+          alt="pizza slice animation"
         />
         <h2 className="font-semibold">PizzaMaster, the ultimate recipe hub.</h2>
         <p className="font-light">
