@@ -66,28 +66,26 @@ By registering on Pizza Master, you become part of a community of pizza lovers. 
 
 ## Installation
 
-Provide the steps required to install your project.
+To install and run this project locally, follow these steps:
 
-## Usage
+1. **Clone the repository:**
 
-Explain how to use your project with some examples.
+   ```bash
+   git clone https://github.com/galeshayek/pizza-project.git
+   cd pizza-master
+   cd client
+   ```
 
-## Dependencies
+2. **Install dependencies:**
 
-List the project's dependencies and how to install them.
+   ```bash
+   npm install
+   ```
 
-## Configuration
+3. **Run the development server:**
 
-Detail any configurations necessary to run your project.
+   ```bash
+   npm run dev
+   ```
 
-## Troubleshooting
-
-Provide solutions to common issues that users might encounter.
-
-## Contributors
-
-List the contributors to the project.
-
-## License
-
-Specify the license under which the project is released.
+   This will start the development server and you can view the project in your browser at `http://localhost:3000`.
