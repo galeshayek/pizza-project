@@ -29,7 +29,7 @@ const Home = () => {
     <>
       {!isLoggedIn ? (
         <section className="flex flex-col items-center justify-center gap-4 text-center">
-          <div className="h-[28vw] w-full bg-homeBanner bg-cover bg-center"></div>
+          <img src="/assets/images/banner.webp" alt="chef illustration" />
           <h1 className="text-red-600">Welcome to Pizza Master!</h1>
           <h2>Discover and Share Delicious Pizza Recipes</h2>
           <p className="px-2 text-xl text-gray-700 md:px-28">
