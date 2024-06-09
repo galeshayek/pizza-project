@@ -59,7 +59,7 @@ const Login = () => {
         </p>
       </div>
 
-      <div className="m-auto flex w-7/12 flex-col justify-center max-md:col-span-2">
+      <div className="mx-auto flex w-7/12 flex-col max-md:col-span-2 md:justify-center">
         <h3 className="pb-4">Login</h3>
         <form
           className="flex max-w-md flex-col gap-4"
