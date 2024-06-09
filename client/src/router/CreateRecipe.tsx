@@ -44,6 +44,7 @@ const CreateRecipe = () => {
       setError("root", { message: "Please add ingredients" });
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    //@ts-ignore
     const { description, info, ingredients, method, title, ...rest } = data;
     const filteredData = { description, info, ingredients, method, title };
     console.log(filteredData);

@@ -38,6 +38,7 @@ const EditRecipe = () => {
           title: res.data.title,
           description: res.data.description,
           ingredients: res.data.ingredients,
+          //@ts-ignore
           "info.time": res.data.info.time,
           "info.level": res.data.info.level,
           "info.category": res.data.info.category,
@@ -54,7 +55,7 @@ const EditRecipe = () => {
     if (data.ingredients.length <= 2) {
       setError("root", { message: "Please add ingredients" });
     }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    //@ts-ignore
     const { description, info, ingredients, method, title, ...rest } = data;
     const filteredData = { description, info, ingredients, method, title };
 

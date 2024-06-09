@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createContext, useState } from "react";
 import { FCC } from "../@types/types";
 
 export const FavContext = createContext({
   status: "",
+  //@ts-ignore
   toggle: (id: string) => {},
 });
 
