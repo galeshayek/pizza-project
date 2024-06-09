@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "fastDeploy": "tsc && vite build && git add . && git commit -m \"general update\" && git push origin master",
     "preview": "vite preview",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
