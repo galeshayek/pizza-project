@@ -1,3 +1,3 @@
 
-export const userUrl = process.env.URL ? `${process.env.URL}api/v1/users` : 'http://localhost:8080/api/v1/users'
-export const recipeUrl = process.env.URL ? `${process.env.URL}api/v1/recipes` : 'http://localhost:8080/api/v1/recipes'
+export const userUrl = 'http://161.35.24.64/api/v1/users'
+export const recipeUrl = 'http://161.35.24.64/api/v1/recipes'
