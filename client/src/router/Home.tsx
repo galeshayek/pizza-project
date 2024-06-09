@@ -54,7 +54,7 @@ const Home = () => {
         </section>
       ) : (
         <section className="flex flex-col items-center justify-center gap-4 text-center">
-          <div className="h-[28vw] w-full bg-homeBanner bg-cover bg-center"></div>
+          <div className="bg-homeBanner h-[28vw] w-full bg-cover bg-center"></div>
           <h1 className="text-red-600">Welcome Back to Pizza Master!</h1>
           <h2>Share Your Delicious Pizza Recipes</h2>
           <p className="text-xl text-gray-700 md:px-28">
