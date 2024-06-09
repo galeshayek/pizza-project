@@ -11,7 +11,7 @@ const initDB = async () => {
             for (let u of users) {
                 u.password = await authService.hashPassword(u.password);
                 const user = new User(u);
-                const saved = await user.save();
+                await user.save();
                 const res = await User.find({}, { password: 0 })
                 Logger.verbose(res);
             };

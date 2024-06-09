@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "prod": " tsx watch src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "zip": "rm -f app.zip && zip -r app.zip * -x \"node_modules/*\" -x \".gitignore\" -x \"config/*\""
   },
