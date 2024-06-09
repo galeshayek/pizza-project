@@ -10,7 +10,10 @@ import { Logger } from "./logs/logger";
 import path from "path";
 import cors from 'cors'
 
+
 configDevEnv();
+const port = process.env.PORT
+
 connect();
 
 const app = express();
@@ -25,7 +28,7 @@ app.use(express.static('public'));
 app.use(errorHandler);
 app.use(notFound);
 
-app.listen(8080, () => {
-  Logger.log("Server is running on http://localhost:8080");
+app.listen(port, () => {
+  Logger.log(`Server is running on http://localhost:${port}`);
   Logger.log(`App is running in ${process.env.NODE_ENV} mode`);
 });
