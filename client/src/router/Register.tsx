@@ -50,7 +50,7 @@ const Register = () => {
     }
   };
   return (
-    <div className=" grid w-full  grid-cols-2 items-center md:*:h-screen">
+    <div className=" grid w-full  grid-cols-2 items-center md:h-screen">
       <div className="m-auto flex w-7/12 flex-col justify-center max-md:col-span-2 max-md:my-10">
         <h3 className="pb-4">Register</h3>
         <form

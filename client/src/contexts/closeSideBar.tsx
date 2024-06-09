@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createContext, useState } from "react";
 import { FCC } from "../@types/types";
 
 export const closeSideBarContext = createContext({
   isClosed: false,
-  //@ts-expect-error
+  //@ts-ignore
   toggle: (data: boolean) => {},
 });
 const CloseSideBarProvider: FCC = ({ children }) => {

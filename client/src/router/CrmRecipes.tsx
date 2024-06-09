@@ -6,13 +6,15 @@ import { IRecipe } from "../@types/types.recipe";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import formatDate from "../utils/formateDate";
+import useWindowSize from "../hooks/useWindowSize";
 
 const CrmRecipes = () => {
+  const { width, md } = useWindowSize();
   const [currentPage, setCurrentPage] = useState(1);
   const onPageChange = (page: number) => setCurrentPage(page);
   const jwt = localStorage.getItem("jwt") || "";
   const navigate = useNavigate();
-  const [r, setRecipes] = useState<IRecipe[]>([]);
+  const [recipes, setRecipes] = useState<IRecipe[]>([]);
   useEffect(() => {
     recipeSerivce.getAllRecipes().then((r) => {
       setRecipes(r.data);
@@ -43,6 +45,8 @@ const CrmRecipes = () => {
     }
   };
 
+  const pageNum = currentPage == 1 ? currentPage : currentPage + 2;
+
   return (
     <>
       <Badge
@@ -61,11 +65,12 @@ const CrmRecipes = () => {
           <li>Added at</li>
           <li>Actions</li>
         </ul>
-        {r.slice(currentPage, currentPage + 3).map((r) => (
+        {recipes.slice(pageNum, pageNum + 3).map((r) => (
           <div
             className="flex items-center justify-between rounded-lg border px-2 max-md:mx-2 max-md:flex-col md:w-11/12 "
             key={r._id}
           >
+            <Badge>{recipes.indexOf(r)}</Badge>
             <div className="line-clamp-3 md:w-3/12 ">
               <h4>{r.title}</h4>
               <p className="text-gray-600">{r.description}</p>
@@ -86,10 +91,14 @@ const CrmRecipes = () => {
           </div>
         ))}
       </div>
-      <div className=" flex overflow-x-auto pb-8 sm:justify-center">
+      <div className="  flex justify-center overflow-x-auto pb-8">
         <Pagination
+          onClick={() =>
+            window.scrollTo({ behavior: "instant", top: 100, left: 0 })
+          }
+          layout={width >= md ? "pagination" : "table"}
           currentPage={currentPage}
-          totalPages={r.length - 3}
+          totalPages={Math.ceil(recipes.length / 3)}
           onPageChange={onPageChange}
         />
       </div>

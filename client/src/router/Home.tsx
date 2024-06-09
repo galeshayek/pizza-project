@@ -29,16 +29,16 @@ const Home = () => {
     <>
       {!isLoggedIn ? (
         <section className="flex flex-col items-center justify-center gap-4 text-center">
-          <div className="bg-homeBanner h-[28vw] w-full bg-cover bg-center"></div>
+          <div className="h-[28vw] w-full bg-homeBanner bg-cover bg-center"></div>
           <h1 className="text-red-600">Welcome to Pizza Master!</h1>
           <h2>Discover and Share Delicious Pizza Recipes</h2>
-          <p className="px-28 text-xl text-gray-700">
+          <p className="px-2 text-xl text-gray-700 md:px-28">
             Welcome to our recipe sharing platform! Here, everyone has the
             opportunity to explore a wide variety of recipes shared by our
             community. Whether you're looking for new culinary inspirations or
             tried-and-true classics, you'll find a recipe to suit your tastes.
           </p>
-          <p className="px-28 text-xl text-gray-700">
+          <p className="px-2 text-xl text-gray-700 md:px-28">
             For those who want to join in the fun, becoming a member allows you
             to contribute your own recipes. Share your favorite dishes with the
             community and inspire others with your culinary creativity. Sign up
@@ -54,7 +54,7 @@ const Home = () => {
         </section>
       ) : (
         <section className="flex flex-col items-center justify-center gap-4 text-center">
-          <div className="bg-homeBanner h-[28vw] w-full bg-cover bg-center"></div>
+          <div className="h-[28vw] w-full bg-homeBanner bg-cover bg-center"></div>
           <h1 className="text-red-600">Welcome Back to Pizza Master!</h1>
           <h2>Share Your Delicious Pizza Recipes</h2>
           <p className="text-xl text-gray-700 md:px-28">

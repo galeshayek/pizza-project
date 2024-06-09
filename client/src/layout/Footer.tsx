@@ -28,7 +28,7 @@ export function FooterComponent() {
         <Footer.Divider />
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright by="Gal Eshayek" year={2024} />
-          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+          <div className="mt-4 flex justify-center space-x-6 sm:mt-0">
             <Footer.Icon
               href="#https://www.facebook.com/galeshayek"
               icon={BsFacebook}

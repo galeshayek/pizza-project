@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
-import MysideBar from "./sideBar";
+import MysideBar from "./MySideBar";
 import { FooterComponent } from "./Footer";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Root = () => {
   return (
@@ -9,7 +10,8 @@ const Root = () => {
         <header>
           <MysideBar />
         </header>
-        <main className="md:grow">
+        <main className="max-md:pt-16 md:grow">
+          <ScrollToTop />
           <Outlet />
         </main>
       </span>

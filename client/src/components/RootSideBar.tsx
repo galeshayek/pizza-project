@@ -33,7 +33,7 @@ const RootSideBar = () => {
 
   return (
     <Sidebar
-      className={`${visibility} top-0 h-screen border-r-2 border-gray-200 max-md:fixed max-md:z-40`}
+      className={`${visibility} h-screen border-gray-200 max-md:fixed max-md:z-40 md:top-5 md:border-r-2 [&>div]:bg-transparent [&>div]:p-0 `}
       aria-label="Sidebar with logo branding example"
     >
       <Sidebar.Logo href="#" img="/assets/images/logo.png" imgAlt="site logo">

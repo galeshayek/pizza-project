@@ -8,12 +8,14 @@ import { userService } from "../service/users";
 import { IUser } from "../@types/types.user";
 import { userUrl } from "../service/url";
 import formatDate from "../utils/formateDate";
+import useWindowSize from "../hooks/useWindowSize";
 
 const CrmUsers = () => {
+  const { width, md } = useWindowSize();
   const [currentPage, setCurrentPage] = useState(1);
   const onPageChange = (page: number) => setCurrentPage(page);
   const jwt = localStorage.getItem("jwt") || "";
-  const [u, setUsers] = useState<IUser[]>([]);
+  const [users, setUsers] = useState<IUser[]>([]);
   useEffect(() => {
     userService.getAll(jwt).then((r) => {
       setUsers(r.data);
@@ -38,6 +40,8 @@ const CrmUsers = () => {
       console.log(e);
     }
   };
+
+  //remove admin
   const removeAdmin = async (id: string) => {
     try {
       await userService.changeRole(jwt, id, { set: "0" });
@@ -86,6 +90,9 @@ const CrmUsers = () => {
     }
   };
 
+  //set pages in pagination]
+  const pageNum = currentPage == 1 ? currentPage : currentPage + 2;
+
   return (
     <>
       <Badge
@@ -102,12 +109,13 @@ const CrmUsers = () => {
           <li>Added at</li>
           <li>Actions</li>
         </ul>
-        {u.slice(currentPage, currentPage + 3).map((u) => (
+        {users.slice(pageNum, pageNum + 3).map((u) => (
           <div
             className="flex items-center justify-between rounded-lg border px-2 max-md:mx-2 max-md:flex-col md:w-11/12 "
             key={u._id}
           >
-            <div className="flex w-5/12 gap-8">
+            <Badge className="mr-2">{users.indexOf(u)}</Badge>
+            <div className="flex gap-8 max-md:py-2 md:w-5/12">
               <Avatar
                 className="aspect-square"
                 img={`${userUrl}${u.image}` || "/assets/images/pizzaLogin.png"}
@@ -118,10 +126,10 @@ const CrmUsers = () => {
                 <p className="text-sm text-gray-600">{u.email}</p>
               </div>
             </div>
-            <p className="w-2/12 text-center text-md">
+            <p className="text-center text-md md:w-2/12">
               {formatDate(u.createdAt)}
             </p>
-            <div className="flex w-5/12 justify-end gap-2">
+            <div className="flex gap-2 max-md:pb-2 md:w-5/12 md:justify-end">
               {u.role == 0 && (
                 <Button className="" onClick={() => makeAdmin(u._id)}>
                   Make Admin
@@ -139,10 +147,14 @@ const CrmUsers = () => {
           </div>
         ))}
       </div>
-      <div className=" flex overflow-x-auto pb-8 sm:justify-center">
+      <div className=" flex  justify-center overflow-x-auto pb-8">
         <Pagination
+          onClick={() =>
+            window.scrollTo({ behavior: "instant", top: 100, left: 0 })
+          }
+          layout={width >= md ? "pagination" : "table"}
           currentPage={currentPage}
-          totalPages={u.length - 3}
+          totalPages={Math.ceil(users.length / 3)}
           onPageChange={onPageChange}
         />
       </div>
