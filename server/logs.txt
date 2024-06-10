@@ -16,3 +16,6 @@ Database Connected
 App is running in prod mode
 Server is running on http://localhost:80
 Database Connected
+App is running in prod mode
+Server is running on http://localhost:80
+Database Connected

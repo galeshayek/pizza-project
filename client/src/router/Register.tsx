@@ -167,7 +167,8 @@ const Register = () => {
                 required: "Password is required",
                 pattern: {
                   value: passwordRegex,
-                  message: "Invalid pattern",
+                  message:
+                    "Password must contain an uppercase letter, a lowercase letter, a number and one of the following characters !@#$%^&*-",
                 },
               })}
             />

@@ -9,7 +9,7 @@ import { RecipeRouter } from "./routes/recipe";
 import { Logger } from "./logs/logger";
 import path from "path";
 import cors from 'cors'
-
+import { env } from 'node:process'
 
 configDevEnv();
 const port = process.env.PORT
@@ -28,7 +28,7 @@ app.use(express.static('public'));
 app.use(errorHandler);
 app.use(notFound);
 
-app.listen(port, () => {
+app.listen(8080, () => {
   Logger.log(`Server is running on http://localhost:${port}`);
   Logger.log(`App is running in ${process.env.NODE_ENV} mode`);
 });
