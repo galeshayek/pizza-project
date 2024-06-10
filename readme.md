@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to Pizza Master, a website dedicated to sharing and discovering pizza recipes across three main categories: dough, sauce, and toppings. This project showcases my final project for [Course Name/Project Purpose]. Below you will find a comprehensive overview of the project, including how to use it, its features, and much more.
+Welcome to Pizza Master, a website dedicated to sharing and discovering pizza recipes across three main categories: dough, sauce, and toppings. This project showcases my final project. Below you will find a comprehensive overview of the project, including how to use it, its features, and much more.
 
 ## Table of Contents
 
@@ -20,10 +20,6 @@ Welcome to Pizza Master, a website dedicated to sharing and discovering pizza re
 - [Contributors](#contributors)
 - [License](#license)
 
-## Welcome to Pizza Master
-
-I'm excited to introduce Pizza Master, my final project. Pizza Master is a website dedicated to sharing and discovering pizza recipes across three main categories: dough, sauce, and toppings. Here's an overview of the project and how to use it.
-
 ## Project Overview
 
 **Mission:**
@@ -40,6 +36,7 @@ The mission of Pizza Master is to create a vibrant community where pizza enthusi
 - **Search Bar:** A search bar is available to filter recipes within each category page, allowing users to quickly find specific recipes.
 - **Dynamic Protected Route Component:** Enhances security by allowing access to certain routes only to users with the appropriate role level. This feature supports future scalability because of the ability to set the Auth level through the component prop.
 - **Dynamic Favorites System:** Users can add and remove recipes from their favorites in real-time. The favorites system updates on the go, providing a personalized experience.
+- \*_CRUD Operations:_ Users can create, read, update, and delete their own recipes, ensuring full control over their shared content.
 
 ## How to Use Pizza Master
 
@@ -64,7 +61,7 @@ The mission of Pizza Master is to create a vibrant community where pizza enthusi
 
 By registering on Pizza Master, you become part of a community of pizza lovers. Share your unique pizza recipes, save your favorites, and engage with others who share your passion for pizza. This project not only showcases my technical skills but also my ability to create an engaging and user-friendly platform.
 
-## Installation
+# Installation
 
 To install and run this project locally, follow these steps:
 
@@ -73,19 +70,40 @@ To install and run this project locally, follow these steps:
    ```bash
    git clone https://github.com/galeshayek/pizza-project.git
    cd pizza-master
+   ```
+
+2. **Setup the client:**
+
+   ```bash
    cd client
    ```
 
-2. **Install dependencies:**
+   - **Install dependencies:**
+
+     ```bash
+     npm install
+     ```
+
+   - **Run the development server:**
+     `bash
+    npm run dev
+    `
+     This will start the client development server and you can view the project in your browser at [http://localhost:5173](http://localhost:5173).
+
+3. **Setup the server:**
 
    ```bash
-   npm install
+   cd ../server
    ```
 
-3. **Run the development server:**
+   - **Install dependencies:**
 
-   ```bash
-   npm run dev
-   ```
+     ```bash
+     npm install
+     ```
 
-   This will start the development server and you can view the project in your browser at `http://localhost:3000`.
+   - **Run the server:**
+     `bash
+    npm run dev
+    `
+     This will start the server and it will be running on [http://localhost:8080](http://localhost:8080).
