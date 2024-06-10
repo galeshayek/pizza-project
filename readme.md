@@ -4,6 +4,8 @@
 
 Welcome to Pizza Master, a website dedicated to sharing and discovering pizza recipes across three main categories: dough, sauce, and toppings. This project showcases my final project. Below you will find a comprehensive overview of the project, including how to use it, its features, and much more.
 
+**Important:** The environment variables are not included in the repository. You should add the `config` folder to the main server directory, which can be found in the campus project page. The server will not run without this config folder.
+
 ## Table of Contents
 
 - [Welcome to Pizza Master](#welcome)
@@ -86,8 +88,8 @@ To install and run this project locally, follow these steps:
 
    - **Run the development server:**
      `bash
-    npm run dev
-    `
+npm run dev
+`
      This will start the client development server and you can view the project in your browser at [http://localhost:5173](http://localhost:5173).
 
 3. **Setup the server:**
@@ -102,8 +104,11 @@ To install and run this project locally, follow these steps:
      npm install
      ```
 
+   - **Important Note:**
+     The environment variables are not included in the repository. You should add the `config` folder to the main server directory. This folder can be found in the campus project page. **The server will not run without this config folder.**
+
    - **Run the server:**
      `bash
-    npm run dev
-    `
+npm run dev
+`
      This will start the server and it will be running on [http://localhost:8080](http://localhost:8080).
