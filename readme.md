@@ -4,7 +4,7 @@
 
 Welcome to Pizza Master, a website dedicated to sharing and discovering pizza recipes across three main categories: dough, sauce, and toppings. This project showcases my final project. Below you will find a comprehensive overview of the project, including how to use it, its features, and much more.
 
-## Important: The environment variables are not included in the repository. You should add the `config` folder to the main server directory, which can be found in the campus project page. The server will not run without this config folder
+## Important: The environment variables are not included in the repository. You should add the `config` folder to the server directory, which can be found in the campus project page. The server will not run without this config folder
 
 ## Table of Contents
 
@@ -105,7 +105,7 @@ npm run dev
      ```
 
    - **Important Note:**
-     The environment variables are not included in the repository. You should add the `config` folder to the main server directory. This folder can be found in the campus project page. **The server will not run without this config folder.**
+     The environment variables are not included in the repository. You should add the `config` folder to the server directory. This folder can be found in the campus project page. **The server will not run without this config folder.**
 
    - **Run the server:**
      `bash
