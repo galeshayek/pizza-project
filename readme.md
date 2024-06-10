@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to Pizza Master, a website dedicated to sharing and discovering pizza recipes across three main categories: dough, sauce, and toppings. This project showcases my final project for [Course Name/Project Purpose]. Below you will find a comprehensive overview of the project, including how to use it, its features, and much more.
+Welcome to Pizza Master, a website dedicated to sharing and discovering pizza recipes across three main categories: dough, sauce, and toppings. This project showcases my final project. Below you will find a comprehensive overview of the project, including how to use it, its features, and much more.
 
 ## Table of Contents
 
