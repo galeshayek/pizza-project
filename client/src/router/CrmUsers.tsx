@@ -136,7 +136,7 @@ const CrmUsers = () => {
                 </Button>
               )}
               {u.role == 10 && (
-                <Button className="" onClick={() => removeAdmin(u._id)}>
+                <Button outline className="" onClick={() => removeAdmin(u._id)}>
                   Remove Admin
                 </Button>
               )}

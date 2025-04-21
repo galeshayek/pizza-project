@@ -32,12 +32,12 @@ router.post("/login", validateLogin, async (req, res, next) => {
   }
 });
 
-router.put('/changerole/:id', ...isAdmin, validateRole, async(req,res,next)=>{
+router.put('/changerole/:id', ...isAdmin, validateRole, async (req, res, next) => {
   try {
     const id = req.params.id
-    const {set} = req.body
+    const { set } = req.body
     const user = await userService.changeRole(set, id);
-    const {role} = user;
+    const { role } = user;
     res.status(200).json(role)
   } catch (e) {
     next(e)

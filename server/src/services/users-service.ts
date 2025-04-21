@@ -64,12 +64,12 @@ const userService = {
     return user
   },
 
-  changeRole: async (role: Role, id: string)=>{
-    if(!role) throw new pizzaError(400, 'Role isnt provided')
-    if(!id) throw new pizzaError(400, 'id isnt provided')
-const user = await User.findByIdAndUpdate(id, {role: role}, {projection: {password: 0}, new: true})
-if(!user) throw new pizzaError(404, 'user not found');
-return user
+  changeRole: async (role: Role, id: string) => {
+    if (!role) throw new pizzaError(400, 'Role isnt provided')
+    if (!id) throw new pizzaError(400, 'id isnt provided')
+    const user = await User.findByIdAndUpdate(id, { role: role }, { projection: { password: 0 }, new: true })
+    if (!user) throw new pizzaError(404, 'user not found');
+    return user
   }
 }
 

@@ -17,7 +17,7 @@ export function FooterComponent() {
             name="PIZZA MASTER"
           />
           <Footer.LinkGroup>
-            <Footer.Link href="#">About</Footer.Link>
+            <Footer.Link href="/about">About</Footer.Link>
             <Footer.Link href="#">Privacy Policy</Footer.Link>
             <Footer.Link href="#">Licensing</Footer.Link>
             <Footer.Link href="mailto:galeshayek15@gmail.com">
@@ -30,17 +30,14 @@ export function FooterComponent() {
           <Footer.Copyright by="Gal Eshayek" year={2024} />
           <div className="mt-4 flex justify-center space-x-6 sm:mt-0">
             <Footer.Icon
-              href="#https://www.facebook.com/galeshayek"
+              href="https://www.facebook.com/galeshayek"
               icon={BsFacebook}
             />
             <Footer.Icon
-              href="#https://www.instagram.com/gal_eshayek/"
+              href="https://www.instagram.com/gal_eshayek/"
               icon={BsInstagram}
             />
-            <Footer.Icon
-              href="#https://github.com/galeshayek"
-              icon={BsGithub}
-            />
+            <Footer.Icon href="https://github.com/galeshayek" icon={BsGithub} />
           </div>
         </div>
       </div>

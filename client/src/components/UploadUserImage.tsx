@@ -12,10 +12,6 @@ import { useContext } from "react";
 const UploadUserImage = () => {
   const { login } = useContext(AuthContext);
 
-  function isEnglish(text) {
-    const englishRegex = /^[A-Za-z0-9.,?!'"\s]+$/;
-    return englishRegex.test(text);
-  }
   const jwt = localStorage.getItem("jwt") || "";
 
   const { _id } = jwtDecode(jwt) as JwtDecodeType;
@@ -32,34 +28,25 @@ const UploadUserImage = () => {
   const onSubmit: SubmitHandler<IUploadImg> = async (data) => {
     const formData = new FormData();
     formData.append("avatar", data.image[0]);
-    //@ts-ignore
-    const formName = formData.get("avatar").name;
-    if (isEnglish(formName) === false) {
-      setError("root", {
-        type: "manual",
-        message: "Image name must be in english",
-      });
-    } else {
-      userService
-        .uploadImage(jwt, _id, formData)
-        .then(() => {
-          Swal.fire({
-            title: "Image Uploaded",
-            icon: "success",
-            timer: 1700,
-            timerProgressBar: true,
-            showConfirmButton: false,
-          });
-          reset();
-          login(jwt);
-        })
-        .catch((e) => {
-          setError("root", {
-            type: "manual",
-            message: e.response.data.message,
-          });
+    userService
+      .uploadImage(jwt, _id, formData)
+      .then(() => {
+        Swal.fire({
+          title: "Image Uploaded",
+          icon: "success",
+          timer: 1700,
+          timerProgressBar: true,
+          showConfirmButton: false,
         });
-    }
+        reset();
+        login(jwt);
+      })
+      .catch((e) => {
+        setError("root", {
+          type: "manual",
+          message: e.response.data.message,
+        });
+      });
   };
 
   return (

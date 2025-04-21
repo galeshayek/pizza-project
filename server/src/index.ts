@@ -9,6 +9,10 @@ import { RecipeRouter } from "./routes/recipe";
 import { Logger } from "./logs/logger";
 import path from "path";
 import cors from 'cors'
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 configDevEnv();
 const port = process.env.PORT
@@ -19,7 +23,6 @@ const app = express();
 app.use(cors())
 app.use(json());
 app.use(morgan("dev"));
-
 app.use('/api/v1/users/profile', express.static(path.join(__dirname, '../public/assets/profile')));
 app.use("/api/v1/users", usersRouter);
 app.use('/api/v1/recipes', RecipeRouter);

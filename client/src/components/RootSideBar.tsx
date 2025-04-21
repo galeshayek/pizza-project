@@ -41,27 +41,52 @@ const RootSideBar = () => {
       </Sidebar.Logo>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <NavLink to={"/"}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "font-semibold text-red-500" : ""
+            }
+            to={"/"}
+          >
             <SideBarItem title="Home">
               <FaPizzaSlice />
             </SideBarItem>
           </NavLink>
-          <NavLink to={"/about"}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "font-semibold text-red-500" : ""
+            }
+            to={"/about"}
+          >
             <SideBarItem title="About">
               <FaInfoCircle />
             </SideBarItem>
           </NavLink>
-          <NavLink to={"/recipes/Dough"}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "font-semibold text-red-500" : ""
+            }
+            to={"/recipes/Dough"}
+          >
             <SideBarItem title="Dough">
               <FaCircle />
             </SideBarItem>
           </NavLink>
-          <NavLink to={"/recipes/Sauce"}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "font-semibold text-red-500" : ""
+            }
+            to={"/recipes/Sauce"}
+          >
             <SideBarItem title="Sauce">
               <FaSquare />
             </SideBarItem>
           </NavLink>
-          <NavLink to={"/recipes/Toppings"}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "font-semibold text-red-500" : ""
+            }
+            to={"/recipes/Toppings"}
+          >
             <SideBarItem title="Toppings">
               <BsTriangleFill />
             </SideBarItem>
@@ -69,14 +94,24 @@ const RootSideBar = () => {
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
           {!isLoggedIn && (
-            <NavLink to={"/login"}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "font-semibold text-red-500" : ""
+              }
+              to={"/login"}
+            >
               <SideBarItem title="Log In">
                 <HiArrowSmRight />
               </SideBarItem>
             </NavLink>
           )}
           {!isLoggedIn && (
-            <NavLink to={"/register"}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "font-semibold text-red-500" : ""
+              }
+              to={"/register"}
+            >
               <SideBarItem title="Sign Up">
                 <FaPen />
               </SideBarItem>
@@ -84,12 +119,22 @@ const RootSideBar = () => {
           )}
           {role >= 1 && (
             <Sidebar.Collapse icon={FaChartBar} label="CRM">
-              <NavLink to={"/crm/recipes"}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "font-semibold text-red-500" : ""
+                }
+                to={"/crm/recipes"}
+              >
                 <SideBarItem title="Recipes">
                   <FaPizzaSlice />
                 </SideBarItem>
               </NavLink>
-              <NavLink to={"/crm/users"}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "font-semibold text-red-500" : ""
+                }
+                to={"/crm/users"}
+              >
                 <SideBarItem title="Users">
                   <FaUser />
                 </SideBarItem>
@@ -99,13 +144,23 @@ const RootSideBar = () => {
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
           {isLoggedIn && (
-            <NavLink to={"/profile/favorites"}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "font-semibold text-red-500" : ""
+              }
+              to={"/profile/favorites"}
+            >
               <SideBarItem title={`Fvorites`}>
                 <FaStar />
               </SideBarItem>
             </NavLink>
           )}
-          <NavLink to={"/my-recipes"}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "font-semibold text-red-500" : ""
+            }
+            to={"/my-recipes"}
+          >
             {isLoggedIn && (
               <SideBarItem title="My Recipes">
                 <FaBookOpen />
@@ -113,14 +168,24 @@ const RootSideBar = () => {
             )}
           </NavLink>
           {isLoggedIn && (
-            <NavLink to={"/create"}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "font-semibold text-red-500" : ""
+              }
+              to={"/create"}
+            >
               <SideBarItem title="Share Recipe">
                 <IoCreate />
               </SideBarItem>
             </NavLink>
           )}
           {isLoggedIn && (
-            <NavLink to={"/profile/edit"}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "font-semibold text-red-500" : ""
+              }
+              to={"/profile/edit"}
+            >
               <SideBarItem title={`${Iuser.name.first} ${Iuser.name.last}`}>
                 <Avatar img={`${userUrl}${Iuser.image}`} />
               </SideBarItem>

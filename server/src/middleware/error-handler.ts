@@ -1,6 +1,4 @@
-import { ValidationError } from "joi";
 import { ErrorRequestHandler } from "express";
-
 import { MongoServerError } from "mongodb";
 import pizzaError from "../errors/pizzaError";
 import { MongooseError } from "mongoose";
@@ -26,9 +24,6 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     });
   }
 
-  if (err instanceof ValidationError) {
-    return res.status(400).json({ type: 'Joi schema validation error', message: err.message });
-  }
   if (err instanceof MongooseError) {
     Logger.log(err)
     return res.status(400).json({ type: 'Mongoose error', message: err.message })
